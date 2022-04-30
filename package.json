@@ -1,0 +1,27 @@
+{"engines": {
+	"node": "14.18.1"
+  },  
+  "name": "esp_lucioles",
+  "version": "1.0.0",
+  "description": "Supervision Esp Lucioles v2021",
+  "main": "node_lucioles_v4.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_lucioles_v4.js"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wajjdi/ESP_lucioles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wajjdi/ESP_lucioles/issues"
+  },
+  "homepage": "https://github.com/Wajjdi/ESP_lucioles#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.5.0",
+    "mqtt": "^4.3.7"
+  }
+}
