@@ -73,9 +73,9 @@ async function v0(){
 	//===============================================
 	// Connexion au broker MQTT distant
 	//
-	const mqtt_url = 'http://192.168.1.43:1883'
+	//const mqtt_url = 'http://192.168.1.43:1883'
 	//const mqtt_url = 'http://broker.hivemq.com'
-	//const mqtt_url = 'http://test.mosquitto.org:1883'
+	const mqtt_url = 'http://test.mosquitto.org:1883'
 	var client_mqtt = mqtt.connect(mqtt_url);
 	
 	//===============================================
