@@ -103,7 +103,7 @@ function get_samples(path_on_node, serie, wh){
     //node_url = 'http://localhost:3000'
     //node_url = 'http://134.59.131.45:3000'
     //node_url = 'http://192.168.1.43:3000'
-    node_url = 'http://esplucioles2.herokuapp.com/'
+    node_url = 'https://esplucioles2.herokuapp.com'
 
     //https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery/1569648-le-fonctionnement-de-ajax
     $.ajax({
