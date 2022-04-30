@@ -234,6 +234,6 @@ app.get('/esp/:what', function (req, res) {
 //================================================================
 // L'application est accessible sur le port 3000
 
-app.listen(process.env.PORT || 3000, function(){
+var listener = app.listen(process.env.PORT || 3000, function(){
     console.log('Express Listening on port ' + listener.address().port); //Listening on port 8888
 });
