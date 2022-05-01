@@ -130,7 +130,7 @@ async function v0(){
 	    var new_entry = { date: frTime, // timestamp the value 
 			      who: wh,      // identify ESP who provide 
 			      temperature: temp,    // this value
-				  localisatio:loc,
+				  localisation:loc,
 				  user:us
 			    };
 	    
