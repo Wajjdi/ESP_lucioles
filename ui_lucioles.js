@@ -15,6 +15,10 @@ const MAC_ADDRESS_ESP = [{
     {
         name: 'Wajdi',
         mac_address: "24:0A:C4:60:FC:94"
+    },
+    {
+        name: 'Remy',
+        mac_address: "24:0A:C4:62:63:E4"
     }
 ]
 
