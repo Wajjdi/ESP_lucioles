@@ -4,6 +4,12 @@
 // Auteur : G.MENEZ
 // RMQ : Manipulation naive (debutant) de Javascript
 //
+const MAC_ADDRESS_ESP = [
+    {      name: 'Vador', mac_address:"80:7D:3A:FD:E8:48",
+        name: 'Wajdi', mac_address:"24:0A:C4:60:FC:94",
+        name: 'Goeffrey' , mac_address:"24:0A:C4:60:DD:40"
+    },
+]
 
 function init() {
     //=== Initialisation des traces/charts de la page html ===
@@ -24,9 +30,7 @@ function init() {
         chart: {renderTo: 'container1'},
         xAxis: {title: {text: 'Heure'}, type: 'datetime'},
         yAxis: {title: {text: 'Temperature (Deg C)'}},
-        series: [{name: 'ESP1', data: []},
-		 {name: 'ESP2', data: []},
-		 {name: 'ESP3', data: []}],
+        series: MAC_ADDRESS_ESP.map(({ name }) => ({ name, data: [] })),
 	//colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
 	colors: ['red', 'green', 'blue'],
         plotOptions: {line: {dataLabels: {enabled: true},
@@ -38,13 +42,7 @@ function init() {
    
 
     //=== Gestion de la flotte d'ESP =================================
-    var which_esps = [
-    "80:7D:3A:FD:E8:48",
-	"24:0A:C4:60:FC:94",
-    "24:0A:C4:60:DD:40"
-//	,"1761716416"
-//	"80:7D:3A:FD:C9:44"
-    ]
+    var which_esps = MAC_ADDRESS_ESP.map(({ mac_address }) => mac_address);
     
     for (var i = 0; i < which_esps.length; i++) {
 	process_esp(which_esps, i)
