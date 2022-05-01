@@ -8,7 +8,7 @@ var path = require('path');
 const mqtt = require('mqtt')
 // Topics MQTT
 //const TOPIC_LIGHT = 'sensors/light'
-const TOPIC_TEMP  = 'wajdi/temp'
+const TOPIC  = 'wgr/esp'
 
 //---  The MongoDB module exports MongoClient, and that's what
 // we'll use to connect to a MongoDB database.
@@ -54,21 +54,21 @@ async function v0(){
 	dbo = mg_client.db(mongoName);
 
 	// Remove "old collections : temp and light
-	dbo.listCollections({name: "temp"})
+	dbo.listCollections({name: "info"})
 	    .next(function(err, collinfo) {
 		if (collinfo) { // The collection exists
 		    //console.log('Collection temp already exists');
-		    dbo.collection("temp").drop() 
+		    dbo.collection("info").drop() 
 		}
 	    });
 
-	dbo.listCollections({name: "light"})
-	    .next(function(err, collinfo) {
-		if (collinfo) { // The collection exists
-		    //console.log('Collection temp already exists');
-		    dbo.collection("light").drop() 
-		}
-	    });
+	// dbo.listCollections({name: "light"})
+	//     .next(function(err, collinfo) {
+	// 	if (collinfo) { // The collection exists
+	// 	    //console.log('Collection temp already exists');
+	// 	    dbo.collection("light").drop() 
+	// 	}
+	//     });
 
 	//===============================================
 	// Connexion au broker MQTT distant
@@ -88,10 +88,10 @@ async function v0(){
 		    console.log('Node Server has subscribed to ', TOPIC_LIGHT);
 		}
 	    })*/
-	    client_mqtt.subscribe(TOPIC_TEMP, function (err) {
+	    client_mqtt.subscribe(TOPIC, function (err) {
 		if (!err) {
-		    //client_mqtt.publish(TOPIC_TEMP, 'Hello mqtt')
-		    console.log('Node Server has subscribed to ', TOPIC_TEMP);
+		    //client_mqtt.publish(TOPIC, 'Hello mqtt')
+		    console.log('Node Server has subscribed to ', TOPIC);
 		}
 	    })
 	})
@@ -110,7 +110,8 @@ async function v0(){
 	    wh = message.info["ident"]
 	    temp = message.status["temperature"]
 		lumiere =message.status["light"]
-
+		loc = message.info["loc"]
+		us=message.info["user"]
 	    // Debug : Gerer une liste de who pour savoir qui utilise le node server	
 	    let wholist = []
 	    var index = wholist.findIndex(x => x.who==wh)
@@ -129,7 +130,9 @@ async function v0(){
 	    var new_entry = { date: frTime, // timestamp the value 
 			      who: wh,      // identify ESP who provide 
 			      temperature: temp,    // this value
-				  light : lumiere
+				  light : lumiere,
+				  localisation: loc,
+				  user:us
 			    };
 	    
 	    // On recupere le nom basique du topic du message
