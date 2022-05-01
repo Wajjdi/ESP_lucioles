@@ -99,7 +99,7 @@ function process_esp(which_esps, i) {
 
     // Gestion de la temperature
     // premier appel pour eviter de devoir attendre RefreshT
-    get_samples('/esp/', chart1.series[i], esp);
+    get_samples('/esp/M1Miage2022', chart1.series[i], esp);
     //calls a function or evaluates an expression at specified
     //intervals (in milliseconds).
     window.setInterval(get_samples,
@@ -109,12 +109,12 @@ function process_esp(which_esps, i) {
         esp); // param 3 for get_samples()
 
     // Gestion de la lumiere
-    // get_samples('/esp/light', chart2.series[i], esp);
-    // window.setInterval(get_samples,
-    // 	       refreshT,
-    // 	       '/esp/light',     // URL to GET
-    // 	       chart2.series[i], // Serie to fill
-    // 	       esp);             // ESP targeted
+    get_samples2('/esp/M1Miage2022', chart2.series[i], esp);
+    window.setInterval(get_samples2,
+    	       refreshT,
+    	       '/esp/M1Miage2022',     // URL to GET
+    	       chart2.series[i], // Serie to fill
+    	       esp);             // ESP targeted
 }
 
 
@@ -144,6 +144,38 @@ function get_samples(path_on_node, serie, wh) {
             let listeData = [];
             resultat.forEach(function (element) {
                 listeData.push([Date.parse(element.date), element.temperature]);
+                //listeData.push([Date.now(),element.value]);
+            });
+            serie.setData(listeData); //serie.redraw();
+        },
+        error: function (resultat, statut, erreur) {},
+        complete: function (resultat, statut) {}
+    });
+}
+function get_samples2(path_on_node, serie, wh) {
+    // path_on_node => help to compose url to get on Js node
+    // serie => for choosing chart/serie on the page
+    // wh => which esp do we want to query data
+
+    //node_url = 'http://localhost:3000'
+    //node_url = 'http://134.59.131.45:3000'
+    //node_url = 'http://192.168.1.43:3000'
+    node_url = 'https://iot21710659m1.herokuapp.com'
+
+    //https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery/1569648-le-fonctionnement-de-ajax
+    $.ajax({
+        url: node_url.concat(path_on_node), // URL to "GET" : /esp/temp ou /esp/light
+        type: 'GET',
+        headers: {
+            Accept: "application/json",
+        },
+        data: {
+            "who": wh
+        }, // parameter of the GET request
+        success: function (resultat, statut) { // Anonymous function on success
+            let listeData = [];
+            resultat.forEach(function (element) {
+                listeData.push([Date.parse(element.date), element.light]);
                 //listeData.push([Date.now(),element.value]);
             });
             serie.setData(listeData); //serie.redraw();

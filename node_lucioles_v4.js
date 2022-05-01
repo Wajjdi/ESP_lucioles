@@ -112,14 +112,17 @@ async function v0() {
 			message = JSON.parse(message);
 			wh = message.info["ident"]
 			temp = message.status["temperature"]
+			lumiere=message.status["light"]
 			loc = message.info["loc"]
 			us = message.info["user"]
+		
 
 			// find devices related to the message in our list
 			if (!devices.find(device => device.wh == message.info['ident'])){
 				devices.push({
 					"wh":wh,
 					'temp':temp,
+					'light':lumiere,
 					'loc':loc,
 					'user':us,
 				})
