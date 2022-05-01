@@ -57,11 +57,11 @@ async function v0() {
 		dbo = mg_client.db(mongoName);
 
 		// Remove "old collections : temp and light
-		dbo.listCollections({ name: "temp" })
+		dbo.listCollections({ name: "M1Miage2022" })
 			.next(function (err, collinfo) {
 				if (collinfo) { // The collection exists
 					//console.log('Collection temp already exists');
-					dbo.collection("temp").drop()
+					dbo.collection("M1Miage2022").drop()
 				}
 			});
 
