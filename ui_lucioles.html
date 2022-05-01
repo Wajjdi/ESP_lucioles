@@ -10,10 +10,21 @@
   </head>
   <body>
     <h1 style="max-width: 600px; margin: 0 auto ; text-align:center">ESPs of Lucioles</h1>
+   
+    <div id="map" style="width: 800px; height: 440px; border: 1px solid #AAA; padding: 6px 12px;"></div>
 
+    <script type='text/javascript' src='map.js'></script>       <!-- map only-->
+
+    <!-- static definition of markers       -->
+    <script type='text/javascript' src='static_markers.js'></script>   
+
+    <!-- by  url GEOJSON !!! markers 
+	 <script type='text/javascript' src='maps/from_url_markers.js'></script> 
+	 -->
+	 
+	 <script type='text/javascript' src='geojson_markers.js'></script> <!-- GEOJSON !!! markers -->
     <br>
-    <div id="container1" style="max-width: 1000px; height: 350px; margin: 0 auto"></div>
-    <div id="container2" style="max-width: 1000px; height: 350px; margin: 0 auto"></div>    
+    <div id="container1" style="max-width: 1000px; height: 350px; margin: 0 auto"></div>  
     <div id="mydiv"></div>
   </body> 
 </html>

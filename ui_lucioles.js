@@ -35,26 +35,11 @@ function init() {
 			    }
 		     }
     });
-    chart2 = new Highcharts.Chart({
-        title: { text: 'Lights'},
-        legend: {title: {text: 'Lights'}, enabled: true},
-        credits: false,
-        chart: {renderTo: 'container2'},
-        xAxis: {title: {text: 'Heure'},type: 'datetime'},
-        yAxis: {title: {text: 'Lumen (Lum)'}},
-	series: [{name: 'ESP1', data: []},
-		 {name: 'ESP2', data: []},
-		 {name: 'ESP3', data: []}],
-	//colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
-	colors: ['red', 'green', 'blue'],
-        plotOptions: {line: {dataLabels: {enabled: true},
-			     enableMouseTracking: true
-			    }
-		     }
-    });
+   
 
     //=== Gestion de la flotte d'ESP =================================
     var which_esps = [
+    "80:7D:3A:FD:E8:48",
 	"24:0A:C4:60:FC:94"
 //	,"1761716416"
 //	"80:7D:3A:FD:C9:44"
