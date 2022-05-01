@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 40px;
+    padding :30px;
+    background-color: slategray;
+    color: white;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial;
+}
+
+h2 {
+    font-size: 16px;
+    text-align: center;
+    font-family: Arial;
+}
+
+#map {
+    width: 800px;
+    height: 440px; 
+    border: 1px solid #AAA; padding: 6px 12px;
+    margin: auto;
+}
+
+#mydiv {
+    margin: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.graph {
+    display: inline-block;
+    width: 45%;
+    margin: 40px auto
+}
