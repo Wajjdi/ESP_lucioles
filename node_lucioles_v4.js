@@ -122,17 +122,14 @@ async function v0() {
 				devices.push({
 					"wh":wh,
 					'temp':temp,
-					'light':lumiere,
 					'loc':loc,
-					'user':us,
+					'user':us
 				})
 			}
 			console.log("devices ----",devices)
 
-			wh = message.info["ident"]
-			temp = message.status["temperature"]
-			loc = message.info["loc"]
-			us = message.info["user"]
+	
+			
 
 			// Debug : Gerer une liste de who pour savoir qui utilise le node server	
 			let wholist = []
@@ -153,8 +150,10 @@ async function v0() {
 				date: frTime, // timestamp the value 
 				who: wh,      // identify ESP who provide 
 				temperature: temp,    // this value
+				light:lumiere,
 				localisation: loc,
 				user: us
+				
 			};
 
 			// On recupere le nom basique du topic du message
