@@ -84,12 +84,12 @@ function process_esp(which_esps,i){
 		       esp);            // param 3 for get_samples()
 
     // Gestion de la lumiere
-    get_samples('/esp/light', chart2.series[i], esp);
-    window.setInterval(get_samples,
-		       refreshT,
-		       '/esp/light',     // URL to GET
-		       chart2.series[i], // Serie to fill
-		       esp);             // ESP targeted
+    // get_samples('/esp/light', chart2.series[i], esp);
+    // window.setInterval(get_samples,
+	// 	       refreshT,
+	// 	       '/esp/light',     // URL to GET
+	// 	       chart2.series[i], // Serie to fill
+	// 	       esp);             // ESP targeted
 }
 
 
@@ -114,7 +114,7 @@ function get_samples(path_on_node, serie, wh){
         success: function (resultat, statut) { // Anonymous function on success
             let listeData = [];
             resultat.forEach(function (element) {
-		listeData.push([Date.parse(element.date),element.value]);
+		listeData.push([Date.parse(element.date),element.temperature]);
 		//listeData.push([Date.now(),element.value]);
             });
             serie.setData(listeData); //serie.redraw();
