@@ -9,6 +9,15 @@ var markers = [
   },
 ]
 
+devices.forEach(element => {
+  console.log(element)
+  // markers.push({
+  //   name: "hello",
+  //   lat: element.localisationlat,
+  //   lng: element.localisation.lng,
+  // })
+})
+
 var myURL = jQuery('script[src$="static_markers.js"]')
     .attr('src')
     .replace('static_markers.js', '')
