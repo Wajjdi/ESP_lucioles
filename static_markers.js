@@ -33,11 +33,11 @@ for (var i = 0; i < markers.length; ++i) {
 	.addTo(map)
 }
 
-function ajoutMarker(lat, lgn){
+function ajoutMarker(msg, lat, lgn){
   markers.push({
-    name: "hello",
-    lat: temp.lat,
-    lng: temp.lgn,
+    name: msg,
+    lat: lat,
+    lng: lgn,
   })
 
   for (var i = 0; i < markers.length; ++i) {
