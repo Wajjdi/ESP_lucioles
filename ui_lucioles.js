@@ -78,6 +78,26 @@ function init() {
             }
         }
     });
+    chart2 = new Highcharts.Chart({
+        title: { text: 'Lights'},
+        legend: {title: {text: 'Lights'}, enabled: true},
+        credits: false,
+        chart: {renderTo: 'container2'},
+        xAxis: {title: {text: 'Heure'},type: 'datetime'},
+        yAxis: {title: {text: 'Lumen (Lum)'}},
+        series: MAC_ADDRESS_ESP.map(({
+            name
+        }) => ({
+            name,
+            data: []
+        })),
+	//colors: ['#6CF', '#39F', '#06C', '#036', '#000'],
+	colors: ['red', 'green', 'blue'],
+        plotOptions: {line: {dataLabels: {enabled: true},
+			     enableMouseTracking: true
+			    }
+		     }
+    });
 
 
     //=== Gestion de la flotte d'ESP =================================
@@ -99,7 +119,7 @@ function process_esp(which_esps, i) {
 
     // Gestion de la temperature
     // premier appel pour eviter de devoir attendre RefreshT
-    get_samples('/esp/M1Miage2022', chart1.series[i], esp);
+    get_samples('/esp/', chart1.series[i], esp);
     //calls a function or evaluates an expression at specified
     //intervals (in milliseconds).
     window.setInterval(get_samples,
@@ -109,7 +129,7 @@ function process_esp(which_esps, i) {
         esp); // param 3 for get_samples()
 
     // Gestion de la lumiere
-    get_samples2('/esp/M1Miage2022', chart2.series[i], esp);
+    get_samples2('/esp/', chart2.series[i], esp);
     window.setInterval(get_samples2,
     	       refreshT,
     	       '/esp/M1Miage2022',     // URL to GET
