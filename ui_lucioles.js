@@ -64,7 +64,7 @@ function process_esp(which_esps,i){
     //intervals (in milliseconds).
     window.setInterval(get_samples,
 		       refreshT,
-		       '/esp/temp',     // param 1 for get_samples()
+		       '/esp/info',     // param 1 for get_samples()
 		       chart1.series[i],// param 2 for get_samples()
 		       esp);            // param 3 for get_samples()
 
