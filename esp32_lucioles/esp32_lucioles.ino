@@ -60,13 +60,14 @@ char *mqtt_id     = "deathstar";
 char *mqtt_login  = "darkvador";
 char *mqtt_passwd = "6poD2R2";
 #else
-char *mqtt_id     = "wajdi";
+char *mqtt_id     = "geoffrey";
 char *mqtt_login  = NULL;
 char *mqtt_passwd = NULL;
 #endif
 
 //==== MQTT TOPICS ==============
-#define TOPIC "wgr/esp"
+#define TOPIC "iot/M1Miage2022"
+//#define TOPIC "wgr/temp"
 #define TOPIC_LED "sensors/led"
 #define TOPIC_LIGHT "sensors/light"
 

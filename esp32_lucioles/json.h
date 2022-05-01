@@ -1,8 +1,8 @@
 #include <ArduinoJson.h>
 
 /*========================================================*/
-float lat =43.7116483;
-float lgn =7.2821685;
+float lat =1.7116483;
+float lgn =10.2821685;
 String getJSONString_fromlocation(float lat, float lgn){
   StaticJsonDocument<1000> jsondoc;
   jsondoc["lat"] = lat;
@@ -29,7 +29,7 @@ String getJSONString_fromstatus(float temp, int light){
   //  jsondoc["status"]["running"] = "";
 
   jsondoc["info"]["loc"] = getJSONString_fromlocation(lat, lgn);
-  jsondoc["info"]["user"] = "21710659";
+  jsondoc["info"]["user"] = "lg802804";
   //jsondoc["info"]["uptime"] = get_uptime();
   jsondoc["info"]["ssid"] = String(WiFi.SSID());
   jsondoc["info"]["ident"] =  String(WiFi.macAddress());

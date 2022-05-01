@@ -9,7 +9,7 @@ const MAC_ADDRESS_ESP = [{
         mac_address: "80:7D:3A:FD:E8:48",
     },
     {
-        name: 'Goeffrey',
+        name: 'Geoffrey',
         mac_address: "24:0A:C4:60:DD:40"
     },
     {
