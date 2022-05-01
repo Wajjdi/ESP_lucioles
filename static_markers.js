@@ -9,15 +9,6 @@ var markers = [
   },
 ]
 
-devices.forEach(element => {
-  console.log(element)
-  // markers.push({
-  //   name: "hello",
-  //   lat: element.localisationlat,
-  //   lng: element.localisation.lng,
-  // })
-})
-
 var myURL = jQuery('script[src$="static_markers.js"]')
     .attr('src')
     .replace('static_markers.js', '')
@@ -40,4 +31,24 @@ for (var i = 0; i < markers.length; ++i) {
 		'</a>'
 	)
 	.addTo(map)
+}
+
+function ajoutMarker(lat, lgn){
+  markers.push({
+    name: "hello",
+    lat: temp.lat,
+    lng: temp.lgn,
+  })
+
+  for (var i = 0; i < markers.length; ++i) {
+    L.marker([markers[i].lat, markers[i].lng], { icon: myIcon })
+	.bindPopup(
+	    '<a href="' +
+		markers[i].url +
+		'" target="_blank">' +
+		markers[i].name +
+		'</a>'
+	)
+	.addTo(map)
+}
 }

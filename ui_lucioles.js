@@ -141,7 +141,6 @@ function process_esp(which_esps, i) {
 
 var devices = []
 
-
 function get_localisation(path_on_node, wh){
     // path_on_node => help to compose url to get on Js node
     // serie => for choosing chart/serie on the page
@@ -163,13 +162,30 @@ function get_localisation(path_on_node, wh){
         }, // parameter of the GET request
         success: function (resultat, statut) { // Anonymous function on success
             resultat.forEach(function (element) {
-                devices.push([JSON.parse(element.localisation)]);
+                temp = JSON.parse(element.localisation)
+                if(devices.length == 0){
+                    devices.push([JSON.parse(element.localisation)]);
+                    
+                }
+                else {
+                    for (let i = 0; i<devices.length ; i++){
+                        if(devices[i][0].lat != temp.lat && devices[i][0].lgn != temp.lgn){
+                            devices.push([JSON.parse(element.localisation)]);
+
+                        } 
+                }
+                }   
+                
             });
+            if(devices.length > 0) {
+                ajoutMarker(devices[devices.length-1][0].lat, devices[devices.length-1][0].lgn)
+            }
            
         },
         error: function (resultat, statut, erreur) {},
         complete: function (resultat, statut) {}
     });
+    
 }
 
 
