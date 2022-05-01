@@ -107,8 +107,8 @@ async function v0(){
 
 	    // Parsing du message suppos� recu au format JSON
 	    message = JSON.parse(message);
-	    wh = message.info.ident
-	    val = message.status.temperature
+	    wh = message.info["ident"]
+	    val = message.status["temperature"]
 
 	    // Debug : Gerer une liste de who pour savoir qui utilise le node server	
 	    let wholist = []
