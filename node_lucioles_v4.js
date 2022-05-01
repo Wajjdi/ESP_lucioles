@@ -54,21 +54,21 @@ async function v0(){
 	dbo = mg_client.db(mongoName);
 
 	// Remove "old collections : temp and light
-	dbo.listCollections({name: "info"})
+	dbo.listCollections({name: "temp"})
 	    .next(function(err, collinfo) {
 		if (collinfo) { // The collection exists
 		    //console.log('Collection temp already exists');
-		    dbo.collection("info").drop() 
+		    dbo.collection("temp").drop() 
 		}
 	    });
 
-	// dbo.listCollections({name: "light"})
-	//     .next(function(err, collinfo) {
-	// 	if (collinfo) { // The collection exists
-	// 	    //console.log('Collection temp already exists');
-	// 	    dbo.collection("light").drop() 
-	// 	}
-	//     });
+	dbo.listCollections({name: "light"})
+	    .next(function(err, collinfo) {
+		if (collinfo) { // The collection exists
+		    //console.log('Collection temp already exists');
+		    dbo.collection("light").drop() 
+		}
+	    });
 
 	//===============================================
 	// Connexion au broker MQTT distant
@@ -109,9 +109,9 @@ async function v0(){
 	    message = JSON.parse(message);
 	    wh = message.info["ident"]
 	    temp = message.status["temperature"]
-		lumiere =message.status["light"]
 		loc = message.info["loc"]
-		us=message.info["user"]
+		us = message.info["user"]
+
 	    // Debug : Gerer une liste de who pour savoir qui utilise le node server	
 	    let wholist = []
 	    var index = wholist.findIndex(x => x.who==wh)
@@ -130,8 +130,7 @@ async function v0(){
 	    var new_entry = { date: frTime, // timestamp the value 
 			      who: wh,      // identify ESP who provide 
 			      temperature: temp,    // this value
-				  light : lumiere,
-				  localisation: loc,
+				  localisatio:loc,
 				  user:us
 			    };
 	    

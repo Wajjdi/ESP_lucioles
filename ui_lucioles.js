@@ -59,12 +59,12 @@ function process_esp(which_esps,i){
     
     // Gestion de la temperature
     // premier appel pour eviter de devoir attendre RefreshT
-    get_samples('/esp/info', chart1.series[i], esp);
+    get_samples('/esp/temp', chart1.series[i], esp);
     //calls a function or evaluates an expression at specified
     //intervals (in milliseconds).
     window.setInterval(get_samples,
 		       refreshT,
-		       '/esp/info',     // param 1 for get_samples()
+		       '/esp/temp',     // param 1 for get_samples()
 		       chart1.series[i],// param 2 for get_samples()
 		       esp);            // param 3 for get_samples()
 
